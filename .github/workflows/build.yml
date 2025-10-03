@@ -29,14 +29,24 @@ jobs:
       with:
         python-version: '3.13'
 
-    - name: Install Windows SDK
+    - name: Install Windows SDK 22621
       uses: ChristopheLav/windows-sdk-install@v1
       with:
         version-sdk: 22621
         features: 'OptionId.UWPCPP,OptionId.DesktopCPPx86,OptionId.DesktopCPPx64'
         
+    - name: Install Windows SDK 17134
+      uses: ChristopheLav/windows-sdk-install@v1
+      with:
+        version-sdk: 17134
+        features: 'OptionId.UWPCPP,OptionId.DesktopCPPx86,OptionId.DesktopCPPx64'
+
+    - name: Set LIBPATH for WinMD
+      run: |
+        echo "LIBPATH=C:\Program Files (x86)\Windows Kits\10\UnionMetadata" >> $GITHUB_ENV
+      
     - name: NPM Install
-      run: npm install
+      run: npm install 
       
     - name: Build
       run: npm run build:abi127  # Builds the project in Release configuration
