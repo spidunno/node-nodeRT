@@ -28,8 +28,15 @@ jobs:
       uses: actions/setup-python@v6
       with:
         python-version: '3.13'
-      
+
+    - name: Install Windows SDK
+      uses: ChristopheLav/windows-sdk-install@v1
+      with:
+        version-sdk: 22621
+        features: 'OptionId.UWPCPP,OptionId.DesktopCPPx86,OptionId.DesktopCPPx64'
+        
     - name: NPM Install
       run: npm install
+      
     - name: Build
       run: npm run build:abi127  # Builds the project in Release configuration
