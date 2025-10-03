@@ -34,12 +34,6 @@ jobs:
       with:
         version-sdk: 22621
         features: 'OptionId.UWPCPP,OptionId.DesktopCPPx86,OptionId.DesktopCPPx64'
-        
-    - name: Install Windows SDK 17134
-      uses: ChristopheLav/windows-sdk-install@v1
-      with:
-        version-sdk: 17134
-        features: 'OptionId.UWPCPP,OptionId.DesktopCPPx86,OptionId.DesktopCPPx64'
 
     - name: Set LIBPATH for WinMD
       run: |
